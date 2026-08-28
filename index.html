@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse</title>
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQ2p2EKW1betKvnbRY0IMoz1mmB5Xjmbs",
+      authDomain: "pulsetest-27f5f.firebaseapp.com",
+      projectId: "pulsetest-27f5f",
+      storageBucket: "pulsetest-27f5f.firebasestorage.app",
+      messagingSenderId: "76919210128",
+      appId: "1:76919210128:web:0a476359e5a199b44b5815",
+      measurementId: "G-50QT1JTTYH",
+      databaseURL: "https://pulsetest-27f5f-default-rtdb.firebaseio.com"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    window.__firebaseApp  = app;
+    window.__firebaseAuth = getAuth(app);
+    window.__firebaseDb   = getFirestore(app);
+    window.__firebaseRtdb = getDatabase(app);
+    window.__firebaseReady = true;
+
+    // Signal app.js that Firebase is ready
+    window.dispatchEvent(new Event("firebase-ready"));
+  </script>
+
+  <!-- React 18 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" src="app.js" defer></script>
+</body>
+</html>
